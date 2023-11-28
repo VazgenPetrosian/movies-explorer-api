@@ -1,2 +1,2 @@
 # movies-explorer-api
-vazgenmovies.nomoredomainsmonster.ru
+https://vazgenmovies.nomoredomainsmonster.ru/
