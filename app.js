@@ -14,7 +14,7 @@ const { PORT, MONGODB } = require('./utils/config');
 const app = express();
 app.use(cors());
 
-mongoose.connect(MONGODB).then(() => console.log('бд запущен'));
+mongoose.connect(MONGODB);
 
 app.use(express.json());
 app.use(helmet());
@@ -27,6 +27,4 @@ app.use(errorLogger); // подключаем логгер ошибок
 app.use(errors());
 app.use(errorMiddleware);
 
-app.listen(PORT, () => {
-  console.log(`Приложение запущено на порте ${PORT}`);
-});
+app.listen(PORT);
