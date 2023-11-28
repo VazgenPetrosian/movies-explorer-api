@@ -10,8 +10,8 @@ const NotFoundError = require('../errors/NotFoundError');
 router.use('/api/users', auth, require('./userRouter'));
 router.use('/api/movies', auth, require('./moviesRouter'));
 
-router.use('/signin', validateLogin, loginUser);
-router.use('/signup', validateRegistration, createUser);
+router.use('/api/signin', validateLogin, loginUser);
+router.use('/api/signup', validateRegistration, createUser);
 
 router.use('*', auth, (req, res, next) => {
   next(new NotFoundError('Указанного пути нет'));
