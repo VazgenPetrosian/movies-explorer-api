@@ -46,6 +46,9 @@ const updateUserById = (req, res, next) => {
     .catch((error) => {
       if (error instanceof ValidationError) {
         next(new BadRequestError(error.message));
+      }
+      if (error.code === 11000) {
+        next(new ConflictError('Пользователь с таким email уже зарегистрирован.'));
       } else {
         next(error);
       }
