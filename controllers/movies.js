@@ -68,8 +68,9 @@ const deleteMovieById = (req, res, next) => {
 };
 
 const getAllMovies = (req, res, next) => {
+  const { _id: userId } = req.user;
   movieModel
-    .find({})
+    .find({ owner: userId })
     .then((movies) => res.send(movies))
     .catch((error) => next(error));
 };

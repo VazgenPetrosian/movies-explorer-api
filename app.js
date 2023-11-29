@@ -5,6 +5,7 @@ const mongoose = require('mongoose');
 const helmet = require('helmet');
 const cors = require('cors');
 const { errors } = require('celebrate');
+const rateLimiter = require('./middlewares/rateLimiter');
 const router = require('./routes');
 const errorMiddleware = require('./middlewares/errorMiddleware');
 const { requestLogger, errorLogger } = require('./middlewares/logger');
@@ -17,6 +18,7 @@ app.use(cors());
 mongoose.connect(MONGODB);
 
 app.use(express.json());
+app.use(rateLimiter);
 app.use(helmet());
 
 app.use(requestLogger); // подключаем логгер запросов
